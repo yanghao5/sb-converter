@@ -2,7 +2,7 @@
     "subscribes":[
         {
             "url": "",
-            "tag": "tag_2",
+            "tag": "tag_1",
             "enabled": true,
             "emoji": 1,
             "subgroup": "",
@@ -12,7 +12,7 @@
         },
         {
             "url": "",
-            "tag": "tag_1",
+            "tag": "tag_2",
             "enabled": true,
             "emoji": 1,
             "subgroup": "",
