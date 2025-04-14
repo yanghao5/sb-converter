@@ -15,8 +15,8 @@ jobs:
             git clone https://github.com/Toperlock/sing-box-subscribe.git
             cp providers.json sing-box-subscribe/
             cd sing-box-subscribe
-            python3 -m pip install --upgrade pip --root-user-action=ignore
-            pip install -r  requirements.txt --root-user-action=ignore
+            python3 -m pip install --upgrade pip 
+            pip install -r  requirements.txt 
             python3 main.py --template_index=0
             
             
