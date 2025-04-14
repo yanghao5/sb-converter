@@ -10,21 +10,13 @@ jobs:
     steps:
         - name: Checkout code
           uses: actions/checkout@v4
-        - name: Hello
-          run: echo "hello world"
-        - name: Read a variable KOO
-          run: echo "My APP_ID value is ${{ vars.KOO }}"
-        - name: Read a variable SO
-          run: echo "My APP_ID value is ${{ vars.SO }}"
-        - name: Read a variable env SO
-          run: echo "My APP_ID value is $SO"
         - name: Git Clone sing-box-subscribe
           run: |
             git clone https://github.com/Toperlock/sing-box-subscribe.git
             cp providers.json sing-box-subscribe/
             cd sing-box-subscribe
             pip install -r  requirements.txt 
-            python3 main.py --template_index=0
+            python main.py --template_index=0
             
             
           
