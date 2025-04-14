@@ -6,10 +6,12 @@ jobs:
     runs-on: ubuntu-24.04
     environment: proxy
     env:
-      SO: ${{ vars.SO }}
+      PROXIES: ${{ vars.PROXIES }}
     steps:
         - name: Checkout code
           uses: actions/checkout@v4
+        - name: echo $PROXIES
+          run: echo $PROXIES
         - name: Git Clone sing-box-subscribe
           run: |
             git clone https://github.com/Toperlock/sing-box-subscribe.git
