@@ -1,11 +1,6 @@
 name: convert
 on:
   workflow_dispatch:
-    inputs:
-      profile:
-        description: "Set the firmware size (in MB). "
-        required: true
-        default: '512'
 jobs:
   build:
     runs-on: ubuntu-22.04
@@ -13,7 +8,7 @@ jobs:
         - name: Checkout code
           uses: actions/checkout@v4
 
-        - name: Validate PPPoE Inputs
+        - name: Hello
           run: |
             echo "hello world"
 
