@@ -11,6 +11,6 @@ jobs:
         - name: Hello
           run: |
             echo "hello world"
-            echo "${{ vars.PROXIES }}"
-            echo "${{ vars.PROXIES }}"
+            echo " ${{ vars.PROXIES }} "
+            echo " ${{ vars.KO }} "
 
