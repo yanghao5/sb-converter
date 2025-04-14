@@ -10,8 +10,6 @@ jobs:
 
         - name: Hello
           run: echo "hello world"
-        - name: Env HELLO
-          run: echo ${{ vars.HELLO }}
-        - name: repo Env KO
-          run: echo " ${{ env.hello.KO }} "
+        - name: Read a variable
+          run: echo "My APP_ID value is ${{ vars.KOO }}"
 
