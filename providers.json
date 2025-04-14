@@ -1,0 +1,33 @@
+{
+    "subscribes":[
+        {
+            "url": "",
+            "tag": "tag_2",
+            "enabled": true,
+            "emoji": 1,
+            "subgroup": "",
+            "prefix": "A-",
+            "ex-node-name": "网站|官网|流量|过期|到期|收藏|超时|重置",
+            "User-Agent":"mihomo/1.19.2"
+        },
+        {
+            "url": "",
+            "tag": "tag_1",
+            "enabled": true,
+            "emoji": 1,
+            "subgroup": "",
+            "prefix": "B-",
+            "ex-node-name": "网站|官网|流量|过期|到期|收藏|超时|重置",
+            "User-Agent":"mihomo/1.19.2"
+        }
+    ],
+    "auto_set_outbounds_dns":{
+        "proxy": "",
+        "direct": ""
+    },
+    "save_config_path": "./config.json",
+    "auto_backup": false,
+    "exclude_protocol":"ssr",
+    "config_template": "",
+    "Only-nodes": false
+}
