@@ -4,6 +4,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-22.04
+    environment: proxy
+    env:
+      SO: ${{ vars.SO }}
     steps:
         - name: Checkout code
           uses: actions/checkout@v4
@@ -14,4 +17,6 @@ jobs:
           run: echo "My APP_ID value is ${{ vars.KOO }}"
         - name: Read a variable SO
           run: echo "My APP_ID value is ${{ vars.SO }}"
+        - name: Read a variable env SO
+          run: echo "My APP_ID value is $SO"
 
