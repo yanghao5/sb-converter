@@ -1,35 +1,11 @@
-# This is a basic workflow to help you get started with Actions
-name: x86-64
+name: convert
 on:
   workflow_dispatch:
     inputs:
       profile:
-        description: "Set the firmware size (in MB). Recommended firmware size: under 512 to reduce compilation time."
+        description: "Set the firmware size (in MB). "
         required: true
         default: '512'
-      enable_docker:
-        description: |
-          Enable Docker
-        required: true
-        default: "no"
-        type: choice
-        options:
-          - "yes"
-          - "no"
-      enable_pppoe:
-        description: "Enable PPPoE"
-        required: true
-        default: "no"
-        type: choice
-        options:
-          - "yes"
-          - "no"
-      pppoe_account:
-        description: "Broadband Account "
-        required: false
-      pppoe_password:
-        description: "Broadand Password"
-        required: false
 jobs:
   build:
     runs-on: ubuntu-22.04
