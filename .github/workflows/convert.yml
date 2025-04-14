@@ -13,5 +13,5 @@ jobs:
         - name: Hello Env
           run: echo ${{ vars.PROXIES }}
         - name: Hello KO
-          run: echo echo " ${{ vars.KO }} "
+          run: echo " ${{ vars.hello.KO }} "
 
