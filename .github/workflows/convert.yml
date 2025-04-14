@@ -22,7 +22,7 @@ jobs:
           run: |
             git clone https://github.com/Toperlock/sing-box-subscribe.git
             cd sing-box-subscribe
-            pip install -r  requirements.txt --root-user-action=ignore
+            pip install -r  requirements.txt 
             
           
 
