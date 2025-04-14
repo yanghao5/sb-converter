@@ -9,8 +9,9 @@ jobs:
           uses: actions/checkout@v4
 
         - name: Hello
-          run: |
-            echo "hello world"
-            echo " ${{ vars.PROXIES }} "
-            echo " ${{ vars.KO }} "
+          run: echo "hello world"
+        - name: Hello Env
+          run: echo " ${{ vars.PROXIES }} "
+        - name: Hello KO
+          run: echo echo " ${{ vars.KO }} "
 
