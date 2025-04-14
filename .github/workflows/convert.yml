@@ -10,8 +10,8 @@ jobs:
 
         - name: Hello
           run: echo "hello world"
-        - name: Hello Env
-          run: echo ${{ vars.PROXIES }}
-        - name: Hello KO
-          run: echo " ${{ vars.hello.KO }} "
+        - name: Env HELLO
+          run: echo ${{ vars.HELLO }}
+        - name: repo Env KO
+          run: echo " ${{ env.hello.KO }} "
 
