@@ -10,6 +10,8 @@ jobs:
 
         - name: Hello
           run: echo "hello world"
-        - name: Read a variable
+        - name: Read a variable KOO
           run: echo "My APP_ID value is ${{ vars.KOO }}"
+        - name: Read a variable SO
+          run: echo "My APP_ID value is ${{ vars.SO }}"
 
