@@ -4,9 +4,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-24.04
-    environment: proxy
     env:
       PROXIES: ${{ vars.PROXIES }}
+      CLOUDFLARE_EMAIL: ${{ VARS.CLOUDFLARE_EMAIL }}
+      CF_ACCOUNT_ID: ${{ vars.CF_ACCOUNT_ID }}
+      KV_NAMESPACE_ID: ${{ vars.KV_NAMESPACE_ID }}
+      CLOUDFLARE_API_KEY: ${{ secrets.CLOUDFLARE_API_KEY }}
     steps:
         - name: Checkout code
           uses: actions/checkout@v4
@@ -14,12 +17,20 @@ jobs:
           run: echo $PROXIES
         - name: Git Clone sing-box-subscribe
           run: |
+            echo "Clone sing-box-subscribe repo"
             git clone https://github.com/Toperlock/sing-box-subscribe.git
-            cp providers.json sing-box-subscribe/
+            echo "Generate providers.json"
+            python3 providers.py
+            echo "replace providers.json and template"
+            mv providers.json sing-box-subscribe/
+            mv config_template_groups_rule_set_tun.json sing-box-subscribe/config_template/
             cd sing-box-subscribe
             python3 -m pip install --upgrade pip 
             pip install -r  requirements.txt 
             python3 main.py --template_index=0
+            mv config.json .. && cd ..
+            python3 upload.py
+
             
             
           
