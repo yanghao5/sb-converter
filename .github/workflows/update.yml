@@ -30,7 +30,7 @@ jobs:
         if: steps.diff_check.outcome == 'failure'
         uses: dacbd/create-issue-action@main
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ github.token }}
           title: "Update providers.json"
           body: "Update providers.json"
         
