@@ -21,7 +21,7 @@ jobs:
       - name: Download current template
         run: |
           cd update/template
-          wget  $TEMPLATE_DOWNLOAD_URL -O new.json
+          wget $TEMPLATE_DOWNLOAD_URL -O new.json
       - name: Compare the templates
         run: |
           diff $OLD_TEMPLATE new.json
