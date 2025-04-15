@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TEMPLATE_DOWNLOAD_URL: https://raw.githubusercontent.com/Toperlock/sing-box-subscribe/refs/heads/main/config_template/config_template_groups_rule_set_tun.json
-      OLD_TEMPLATE: config_template_groups_rule_set_tun.json
+      OLD_TEMPLATE: update/template/config_template_groups_rule_set_tun.json
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
 
     steps:
@@ -24,7 +24,7 @@ jobs:
           wget $TEMPLATE_DOWNLOAD_URL -O new.json
       - name: Compare the templates
         run: |
-          diff $OLD_TEMPLATE new.json
+          diff $OLD_TEMPLATE update/template/new.json
         id: diff_check
       - name: create an issue
         if: steps.diff_check.outcome == 'failure'
