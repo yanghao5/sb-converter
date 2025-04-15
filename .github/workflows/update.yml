@@ -12,8 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TEMPLATE_DOWNLOAD_URL: https://raw.githubusercontent.com/Toperlock/sing-box-subscribe/refs/heads/main/config_template/config_template_groups_rule_set_tun.json
-      OLD_TEMPLATE: update/template/config_template_groups_rule_set_tun.json
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+      OLD_TEMPLATE: update/template/config_template_groups_rule_set_tun.json  
 
     steps:
       - name: Checkout code
@@ -31,7 +30,7 @@ jobs:
         if: steps.diff_check.outcome == 'failure'
         uses: dacbd/create-issue-action@main
         with:
-          token: $GITHUB_TOKEN
+          token: ${{ secrets.GITHUB_TOKEN }}
           title: update providers.json
           body: update providers.json
         
