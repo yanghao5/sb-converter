@@ -31,7 +31,7 @@ jobs:
         uses: dacbd/create-issue-action@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          title: update providers.json
-          body: update providers.json
+          title: "Update providers.json"
+          body: "Update providers.json"
         
           
