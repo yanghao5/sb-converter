@@ -1,0 +1,37 @@
+name: Update
+
+# on:
+#   schedule:
+#     - cron: '0 0 * * *'  # 每天午夜12点执行（UTC）
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update-template:
+    runs-on: ubuntu-latest
+    env:
+      TEMPLATE_DOWNLOAD_URL: https://raw.githubusercontent.com/Toperlock/sing-box-subscribe/refs/heads/main/config_template/config_template_groups_rule_set_tun.json
+      OLD_TEMPLATE: config_template_groups_rule_set_tun.json
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Download current template
+        run: |
+          cd update/template
+          wget  $TEMPLATE_DOWNLOAD_URL -O new.json
+      - name: Compare the templates
+        run: |
+          diff $OLD_TEMPLATE new.json
+        id: diff_check
+      - name: create an issue
+        if: steps.diff_check.outcome == 'failure'
+        uses: dacbd/create-issue-action@main
+        with:
+          token: $GITHUB_TOKEN
+          title: update providers.json
+          body: update providers.json
+        
+          
