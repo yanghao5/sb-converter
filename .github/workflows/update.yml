@@ -26,6 +26,7 @@ jobs:
         run: |
           diff $OLD_TEMPLATE update/template/new.json
         id: diff_check
+        continue-on-error: true
       - name: create an issue
         if: steps.diff_check.outcome == 'failure'
         uses: dacbd/create-issue-action@main
