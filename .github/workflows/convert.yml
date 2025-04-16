@@ -9,7 +9,7 @@ jobs:
       CLOUDFLARE_EMAIL: ${{ VARS.CLOUDFLARE_EMAIL }}
       CF_ACCOUNT_ID: ${{ vars.CF_ACCOUNT_ID }}
       KV_NAMESPACE_ID: ${{ vars.KV_NAMESPACE_ID }}
-      CLOUDFLARE_API_KEY: ${{ secrets.CLOUDFLARE_API_KEY }}
+      CLOUDFLARE_API_KEY: ${{ vars.CLOUDFLARE_API_KEY }}
     steps:
         - name: Checkout code
           uses: actions/checkout@v4
@@ -19,9 +19,6 @@ jobs:
           run: |
             echo "Clone sing-box-subscribe repo"
             python3 --version
-            sudo apt-get install python3.12-venv -y
-            python3 -m venv ~/myenv
-            source ~/myenv/bin/activate
             git clone https://github.com/Toperlock/sing-box-subscribe.git
             echo "Generate providers.json"
             python3 providers.py
@@ -30,7 +27,6 @@ jobs:
             mv config_template_groups_rule_set_tun.json sing-box-subscribe/config_template/
             cd sing-box-subscribe
             python3 -m pip install --upgrade pip -q
-            pip install -r  requirements.txt -q
             pip install -r  requirements.txt -q
             echo $PROXIES
             python3 main.py --template_index=0
