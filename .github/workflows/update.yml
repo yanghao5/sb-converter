@@ -36,5 +36,33 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           title: Update providers.json
           body: Update providers.json
+jobs:
+  update-proxies:
+    runs-on: ubuntu-latest
+    env:
+      PROXIES: ${{ vars.PROXIES }}
+      CLOUDFLARE_EMAIL: ${{ vars.CLOUDFLARE_EMAIL }}
+      CF_ACCOUNT_ID: ${{ vars.CF_ACCOUNT_ID }}
+      KV_NAMESPACE_ID: ${{ vars.KV_NAMESPACE_ID }}
+      CLOUDFLARE_API_KEY: ${{ vars.CLOUDFLARE_API_KEY }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Compare the proxies
+        run: |
+          python3 -m pip install --upgrade pip -q
+          pip install requests
+          pip install cloudflare
+          python3 download.py
+          python3 diff.py
+        id: diff_check
+        continue-on-error: true
+      - name: create an issue
+        if: steps.diff_check.outcome == 'failure'
+        uses: dacbd/create-issue-action@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          title: Update proxies
+          body: Update proxies
         
           
