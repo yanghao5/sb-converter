@@ -13,8 +13,6 @@ jobs:
     steps:
         - name: Checkout code
           uses: actions/checkout@v4
-        - name: echo $PROXIES
-          run: echo $PROXIES
         - name: Git Clone sing-box-subscribe
           run: |
             echo "Clone sing-box-subscribe repo"
