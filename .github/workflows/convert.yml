@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-24.04
     env:
       PROXIES: ${{ vars.PROXIES }}
-      CLOUDFLARE_EMAIL: ${{ VARS.CLOUDFLARE_EMAIL }}
+      CLOUDFLARE_EMAIL: ${{ vars.CLOUDFLARE_EMAIL }}
       CF_ACCOUNT_ID: ${{ vars.CF_ACCOUNT_ID }}
       KV_NAMESPACE_ID: ${{ vars.KV_NAMESPACE_ID }}
       CLOUDFLARE_API_KEY: ${{ vars.CLOUDFLARE_API_KEY }}
