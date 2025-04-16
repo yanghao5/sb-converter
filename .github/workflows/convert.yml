@@ -30,8 +30,8 @@ jobs:
             mv config_template_groups_rule_set_tun.json sing-box-subscribe/config_template/
             cd sing-box-subscribe
             python3 -m pip install --upgrade pip -q
-            pip install -r  requirements.txt 
-            pip install -r  requirements.txt
+            pip install -r  requirements.txt -q
+            pip install -r  requirements.txt -q
             echo $PROXIES
             python3 main.py --template_index=0
             mv config.json .. && cd ..
