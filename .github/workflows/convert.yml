@@ -25,8 +25,9 @@ jobs:
             mv providers.json sing-box-subscribe/
             mv config_template_groups_rule_set_tun.json sing-box-subscribe/config_template/
             cd sing-box-subscribe
-            python3 -m pip install --upgrade pip 
+            python3 -m pip install --upgrade pip -q
             pip install -r  requirements.txt 
+            echo $PROXIES
             python3 main.py --template_index=0
             mv config.json .. && cd ..
             pip install requests
