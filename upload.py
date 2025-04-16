@@ -6,9 +6,9 @@ import requests
 # upload proxies
 
 # pip install requests
+email = os.environ.get("CLOUDFLARE_EMAIL")  # Cloudflare account email
 account_id = os.environ.get("CF_ACCOUNT_ID")  # Cloudflare account ID
 namespace_id = os.environ.get("KV_NAMESPACE_ID")  # Cloudflare KV namespace ID
-email = os.environ.get("CLOUDFLARE_EMAIL")  # Cloudflare account email
 api_key = os.environ.get("CLOUDFLARE_API_KEY")  # Cloudflare API key
 
 with open('config.json', 'r', encoding='utf-8') as file:
