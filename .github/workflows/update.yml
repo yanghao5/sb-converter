@@ -34,8 +34,8 @@ jobs:
         uses: dacbd/create-issue-action@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          title: Update providers.json
-          body: Update providers.json
+          title: Update template
+          body: Update template
 
   update-proxies:
     runs-on: ubuntu-latest
