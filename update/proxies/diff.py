@@ -54,7 +54,7 @@ def upload_proxies(currentproxies):
     data = [
         {
             "key": "proxies",
-            "value": json.dumps(currentproxies)
+            "value": json.dumps(currentproxies, ensure_ascii=False)
         }
     ]
 
