@@ -51,8 +51,7 @@ jobs:
       - name: Compare the proxies
         run: |
           python3 -m pip install --upgrade pip -q
-          pip install requests
-          pip install cloudflare
+          pip install requests cloudflare -q
           cd update/proxies
           python3 download.py
           python3 diff.py
