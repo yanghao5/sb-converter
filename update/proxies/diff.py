@@ -19,10 +19,10 @@ def current_proxies(files):
         filtered_proxies=[proxy for proxy in proxies if not any(keyword in proxy['name'] for keyword in keywords)]
         currentproxies.extend(filtered_proxies)
         
-    with open("filtered_proxies.json", "w", encoding="utf-8") as json_file:
+    with open("current_proxies_nodes.json", "w", encoding="utf-8") as json_file:
         json.dump(currentproxies, json_file, ensure_ascii=False, indent=4)
-        print("过滤后的 proxies 已保存到 'filtered_proxies.json' 文件中")
-    # 直接返回 filtered_proxies 列表，不需要再用 json.loads
+        print("过滤后的 proxies 已保存到 'current_proxies_nodes.json' 文件中")
+    # 直接返回 filtered_proxies_nodes 列表，不需要再用 json.loads
     return currentproxies
 
 def get_oldproxies():
@@ -37,9 +37,9 @@ def get_oldproxies():
     )
     content = value.read()
     oldproxies = json.loads(content)
-    with open("old_proxies.json", "w", encoding="utf-8") as json_file:
+    with open("old_proxies_nodes.json", "w", encoding="utf-8") as json_file:
         json.dump(oldproxies, json_file, ensure_ascii=False, indent=4)
-    print("已保存到 old_proxies.json")
+    print("已保存到 old_proxies_nodes.json")
     return oldproxies
 
 
@@ -53,7 +53,7 @@ def upload_proxies(currentproxies):
 
     data = [
         {
-            "key": "sb",
+            "key": "proxies",
             "value": json.dumps(currentproxies)
         }
     ]
