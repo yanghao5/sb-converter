@@ -23,11 +23,13 @@
                 "tag": "proxyDns",
                 "address": "https://cloudflare-dns.com/dns-query",
                 "address_resolver": "localDns",
+                "client_subnet": "61.132.163.68/24",
                 "detour": "Proxy"
             },
             {
                 "tag": "localDns",
                 "address": "223.5.5.5",
+                "client_subnet": "61.132.163.68/24",
                 "detour": "direct"
             }
         ],
@@ -37,32 +39,39 @@
                     "notion.com",
                     "notion.so"
                 ],
+                "rewrite_ttl": 15,
                 "server": "proxyDns"
             },
             {
                 "domain_suffix": [
                     "bing.com"
                 ],
+                "rewrite_ttl": 15,
                 "server": "localDns"
             },
             {
                 "outbound": "any",
+                "rewrite_ttl": 15,
                 "server": "localDns"
             },
             {
                 "rule_set": "geosite-cn",
+                "rewrite_ttl": 15,
                 "server": "localDns"
             },
             {
                 "clash_mode": "direct",
+                "rewrite_ttl": 15,
                 "server": "localDns"
             },
             {
                 "clash_mode": "global",
+                "rewrite_ttl": 15,
                 "server": "proxyDns"
             },
             {
                 "rule_set": "geosite-geolocation-!cn",
+                "rewrite_ttl": 15,
                 "server": "proxyDns"
             }
         ],
@@ -117,10 +126,10 @@
                 "America",
                 "Others"
             ],
-            "default": "America"
+            "default": "Japan"
         },
         {
-            "tag": "Google",
+            "tag": "Google Youtube",
             "type": "selector",
             "outbounds": [
                 "HongKong",
@@ -128,8 +137,9 @@
                 "Singapore",
                 "Japan",
                 "America",
-                "Others"
-            ]
+                "Japan"
+            ],
+            "default": "Japan"
         },
         {
             "tag": "Telegram",
@@ -141,7 +151,8 @@
                 "Japan",
                 "America",
                 "Others"
-            ]
+            ],
+            "default": "Japan"
         },
         {
             "tag": "Apple",
@@ -154,10 +165,11 @@
                 "Japan",
                 "America",
                 "Others"
-            ]
+            ],
+            "default": "Japan"
         },
         {
-            "tag": "Microsoft",
+            "tag": "Microsoft Github",
             "type": "selector",
             "outbounds": [
                 "direct",
@@ -167,7 +179,8 @@
                 "Japan",
                 "America",
                 "Others"
-            ]
+            ],
+            "default": "Japan"
         },
         {
             "tag": "Games",
@@ -180,7 +193,8 @@
                 "Japan",
                 "America",
                 "Others"
-            ]
+            ],
+            "default": "Japan"
         },
         {
             "tag": "China",
@@ -188,7 +202,8 @@
             "outbounds": [
                 "direct",
                 "Proxy"
-            ]
+            ],
+            "default": "direct"
         },
         {
             "tag": "HongKong",
@@ -306,10 +321,10 @@
             "tag": "direct-laggy",
             "type": "urltest",
             "outbounds": [
-              "direct"
+                "direct"
             ],
-            "url": "http://connect.rom.miui.com/generate_204",
-            "interval": "3m",
+            "url": "http://wifi.vivo.com.cn/generate_204",
+            "interval": "10m",
             "tolerance": 50
         }
     ],
@@ -360,18 +375,20 @@
             },
             {
                 "domain_suffix": [
-                  "notion.so",
-                  "notion.com"
-                ],
-                "outbound": "Proxy"
-              },
-              {
-                "domain_suffix": [
-                  "bing.com"
+                    "notion.so",
+                    "notion.com"
                 ],
                 "ip_cidr": [
-                  "111.230.31.1/24",
-                  "43.156.127.29/24"
+                    "43.156.127.29/24"
+                ],
+                "outbound": "Proxy"
+            },
+            {
+                "domain_suffix": [
+                    "bing.com"
+                ],
+                "ip_cidr": [
+                    "111.230.31.1/24"
                 ],
                 "outbound": "direct"
             },
@@ -385,7 +402,7 @@
                     "geoip-google",
                     "geosite-google"
                 ],
-                "outbound": "Google"
+                "outbound": "Google Youtube"
             },
             {
                 "rule_set": [
@@ -399,7 +416,15 @@
                     "geosite-microsoft",
                     "geosite-github"
                 ],
-                "outbound": "Microsoft"
+                "outbound": "Microsoft Github"
+            },
+            {
+                "rule_set": [
+                  "geoip-apple",
+                  "geosite-apple",
+                  "geosite-amazon"
+                ],
+                "outbound": "Apple"
             },
             {
                 "rule_set": [
@@ -464,6 +489,27 @@
                 "type": "remote",
                 "format": "binary",
                 "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/telegram.srs",
+                "download_detour": "direct"
+            },
+            {
+                "tag": "geoip-apple",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo-lite/geoip/apple.srs",
+                "download_detour": "direct"
+            },
+            {
+                "tag": "geosite-apple",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/apple.srs",
+                "download_detour": "direct"
+            },
+            {
+                "tag": "geosite-amazon",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/amazon.srs",
                 "download_detour": "direct"
             },
             {
