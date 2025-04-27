@@ -1,5 +1,7 @@
 # sb-converter
 
+用于将 clashmeta 订阅转换成 sing-box 订阅
+
 ## Action
 
 - `convert`: convert  subscribe format mihomo to sing-box by hand
